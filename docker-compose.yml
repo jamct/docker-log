@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   fluentd:
     build: ./fluentd
@@ -7,16 +7,16 @@ services:
     ports:
       - "127.0.0.1:24224:24224"
       - "127.0.0.1:24224:24224/udp"
+    depends_on:
+      - elasticsearch
   elasticsearch:
     image: elasticsearch:7.6.0
     environment:
       - "discovery.type=single-node"
     expose:
       - "9200"
-    ports:
-      - "127.0.0.1:9200:9200"
-    depends_on:
-      - fluentd
+  # volumes:
+  #   - ./data/elastic:/usr/share/elasticsearch/data
   kibana:
     image: kibana:7.2.0
     ports:
@@ -31,4 +31,4 @@ services:
       driver: "fluentd"
       options:
         fluentd-address: localhost:24224
-        tag: web.nignx.logs
+        tag: web.nginx.logs
