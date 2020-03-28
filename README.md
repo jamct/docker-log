@@ -8,6 +8,11 @@ Just run `docker-compose up`. After a few minutes Kibana will respond at "localh
 
 This project is not ready for production use! Make sure to add some kind of authorization in front of your Kibana Dashboards.
 
+## Persistent data
+
+To store log data in a persistent docker volume, uncomment the volume definition in docker-compose.yml. Data is stored in "./data/elastic".
+
+
 ## Documentation
 
 The usage is described in German c't magazine (08/2020). [Container-Logbücher](https://www.heise.de/select/ct/2020/8/2000809334796828694)
